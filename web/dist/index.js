@@ -23,7 +23,7 @@ var tabCloseButton = {
 var sidePanelLayout = {
   id: "SidePanelLayout",
   name: "Side-panel layout fixes on narrow screens",
-  upstream: "https://github.com/Comfy-Org/ComfyUI_frontend/issues",
+  upstream: "https://github.com/Comfy-Org/ComfyUI_frontend/issues/13446",
   tooltip: "Wrap the side-panel button row, allow vertical scroll, and drop rigid widths on narrow viewports.",
   css: `
 @media (max-width: 768px) {
