@@ -1,0 +1,34 @@
+name: "Registry: health check"
+
+on:
+  schedule:
+    - cron: '23 6 * * 1'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  registry-health:
+    name: Check Comfy Registry status
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query the registry for the Active version status
+        env:
+          NODE_ID: "comfyui-touch-shim"
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          status=$(curl -fsSL "https://api.comfy.org/nodes/${NODE_ID}" \
+            | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("status",""))' \
+            2>/dev/null || echo "")
+          echo "registry status: ${status:-unknown}"
+          if [ "$status" = "NodeStatusBanned" ] || [ "$status" = "NodeVersionStatusFlagged" ]; then
+            title="Registry health: ${NODE_ID} is ${status}"
+            existing=$(gh issue list -R "$REPO" --state open --search "$title" --json number --jq '.[].number')
+            if [ -z "$existing" ]; then
+              gh issue create -R "$REPO" --title "$title" \
+                --body "The Comfy Registry reports \`${status}\` for the Active version. Installs fall back to the last Active version until a fresh good version re-points Active forward. See https://registry.comfy.org/nodes/${NODE_ID}."
+            fi
+          fi

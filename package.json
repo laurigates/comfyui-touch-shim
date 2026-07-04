@@ -1,0 +1,22 @@
+{
+  "name": "comfyui-touch-shim",
+  "private": true,
+  "type": "module",
+  "description": "Small stopgap mobile/touch QOL fixes for upstream ComfyUI frontend bugs \u2014 each shim toggleable via a setting, linked to its upstream issue, and deleted once fixed upstream. TypeScript source in src/, built to web/dist/ via bun build. See ADR-0001.",
+  "scripts": {
+    "build": "bun build ./src/index.ts --target browser --format esm --outdir web/dist --external '/scripts/*'",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check",
+    "knip": "knip"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "@comfyorg/comfyui-frontend-types": "^1.43.0",
+    "@biomejs/biome": "^2.4.15",
+    "vitest": "^4.1.7",
+    "jsdom": "^29.0.0",
+    "knip": "^5.0.0"
+  }
+}
