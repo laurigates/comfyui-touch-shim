@@ -1,0 +1,13 @@
+# Changelog
+
+## [0.1.1](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.0...comfyui-touch-shim-v0.1.1) (2026-07-04)
+
+
+### Features
+
+* initial touch-shim pack — toggleable stopgap mobile QOL fixes ([f141ab6](https://github.com/laurigates/comfyui-touch-shim/commit/f141ab63e1292d6aa45fe5463c62af59b77c5627))
+
+
+### Miscellaneous
+
+* **finishing-pass:** rasterize registry assets, sync uv.lock on release, fix keywords ([#1](https://github.com/laurigates/comfyui-touch-shim/issues/1)) ([31d3bbe](https://github.com/laurigates/comfyui-touch-shim/commit/31d3bbe1ee3567b4d42a008c550ca980efcd2d77))
