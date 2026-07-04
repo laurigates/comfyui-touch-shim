@@ -6,7 +6,7 @@ license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Lauri Gates" }]
-keywords = ["comfyui", "comfyui-nodes", "ui", "picker", "mobile", "touch"]
+keywords = ["comfyui", "comfyui-nodes", "ui", "shim", "accessibility", "mobile", "touch"]
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
