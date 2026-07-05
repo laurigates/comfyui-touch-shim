@@ -33,7 +33,7 @@ closes and the fix ships in `comfyui-frontend-package`.
 | Shim | Problem | Upstream |
 |------|---------|----------|
 | Always-visible workflow-tab close button | The tab's ✕ is hover-revealed, and touch never hovers — tabs can't be closed at all on touch devices. The shim forces it visible on coarse-pointer devices, gives it a real tap target, and makes the unsaved-dot overlay click-through. | [Comfy-Org/ComfyUI_frontend#13279](https://github.com/Comfy-Org/ComfyUI_frontend/issues/13279) |
-| Side-panel layout fixes on narrow screens | The sidebar button row doesn't wrap, a nested status column carries a rigid width, and the parent panel is `overflow: hidden` — controls get clipped and are unreachable on phones. The shim wraps the row, allows vertical scroll, and drops the rigid width on narrow viewports. | (to be filed) |
+| Side-panel layout fixes on narrow screens | The sidebar button row doesn't wrap, a nested status column carries a rigid width, and the parent panel is `overflow: hidden` — controls get clipped and are unreachable on phones. The shim wraps the row, allows vertical scroll, and drops the rigid width on narrow viewports. | [Comfy-Org/ComfyUI_frontend#13446](https://github.com/Comfy-Org/ComfyUI_frontend/issues/13446) |
 | **Dock actionbar to top** command | Once the actionbar is undocked, the only way to re-dock it is dragging its handle onto a drop target the handle physically can't reach on a phone. The command (menu: *Extensions → Touch Shim*, or the command palette) sets the persisted docked flag and reloads. | [Comfy-Org/ComfyUI_frontend#13442](https://github.com/Comfy-Org/ComfyUI_frontend/issues/13442) |
 
 <!-- Hero screenshot: add the containerized screenshot pipeline with the

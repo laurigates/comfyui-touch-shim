@@ -16,7 +16,9 @@ import {
 describe("shim registry", () => {
   it("every shim links its upstream issue and carries non-empty CSS", () => {
     for (const shim of SHIMS) {
-      expect(shim.upstream).toMatch(/^https:\/\/github\.com\/Comfy-Org\/ComfyUI_frontend\/issues/);
+      expect(shim.upstream).toMatch(
+        /^https:\/\/github\.com\/Comfy-Org\/ComfyUI_frontend\/issues\/\d+$/,
+      );
       expect(shim.css.trim()).not.toBe("");
       expect(shim.tooltip.trim()).not.toBe("");
     }
