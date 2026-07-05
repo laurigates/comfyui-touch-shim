@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.1...comfyui-touch-shim-v0.1.2) (2026-07-05)
+
+
+### Bug Fixes
+
+* **shim:** link filed upstream issue for SidePanelLayout + tighten guard ([#3](https://github.com/laurigates/comfyui-touch-shim/issues/3)) ([2626ea2](https://github.com/laurigates/comfyui-touch-shim/commit/2626ea2a2a53f971cd963d2d01e3be598fa4981c))
+
 ## [0.1.1](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.0...comfyui-touch-shim-v0.1.1) (2026-07-04)
 
 
