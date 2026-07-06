@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.2...comfyui-touch-shim-v0.1.3) (2026-07-06)
+
+
+### Features
+
+* move the dock command under the shared Extensions &gt; Touch Tools submenu ([#6](https://github.com/laurigates/comfyui-touch-shim/issues/6)) ([dd45691](https://github.com/laurigates/comfyui-touch-shim/commit/dd45691af8ff7182e77ced26715b48fd6288bc4a))
+
 ## [0.1.2](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.1...comfyui-touch-shim-v0.1.2) (2026-07-05)
 
 
