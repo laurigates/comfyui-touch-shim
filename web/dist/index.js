@@ -82,12 +82,13 @@ app.registerExtension({
     {
       id: DOCK_COMMAND_ID,
       label: "Dock actionbar to top (reloads the page)",
+      icon: "pi pi-arrow-up",
       function: () => dockActionbar()
     }
   ],
   menuCommands: [
     {
-      path: ["Extensions", "Touch Shim"],
+      path: ["Extensions", "Touch Tools"],
       commands: [DOCK_COMMAND_ID]
     }
   ]
