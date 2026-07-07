@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.3...comfyui-touch-shim-v0.1.4) (2026-07-07)
+
+
+### Features
+
+* dock floating canvas controls into a scrollable bottom bar ([#8](https://github.com/laurigates/comfyui-touch-shim/issues/8)) ([80733b5](https://github.com/laurigates/comfyui-touch-shim/commit/80733b50d1da2fc1e5b7c5bbd8ad62550c0889f9))
+
 ## [0.1.3](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.2...comfyui-touch-shim-v0.1.3) (2026-07-06)
 
 
