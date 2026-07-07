@@ -18,9 +18,11 @@
 // (a dead selector styles nothing).
 import type { ComfyApp } from "@comfyorg/comfyui-frontend-types";
 import { app } from "/scripts/app.js";
+import { createCanvasControlsDock } from "./canvas-controls-dock";
 
 const EXT_NAME = "comfyui-touch-shim";
 const DOCK_COMMAND_ID = "touch-shim.dock-actionbar";
+const CANVAS_DOCK_SETTING_ID = "TouchShim.CanvasControlsDock";
 
 // ============================================================
 // Shim registry
@@ -141,8 +143,9 @@ export function dockActionbar(
 // ============================================================
 
 type ExtensionSettings = NonNullable<Parameters<ComfyApp["registerExtension"]>[0]["settings"]>;
+type SettingParam = ExtensionSettings[number];
 
-function shimSettings(): ExtensionSettings {
+function shimSettings(): SettingParam[] {
   return SHIMS.map((shim) => ({
     id: `TouchShim.${shim.id}`,
     name: shim.name,
@@ -154,12 +157,32 @@ function shimSettings(): ExtensionSettings {
       if (value) applyCssShim(shim);
       else removeCssShim(shim);
     },
-  })) as ExtensionSettings;
+  })) as SettingParam[];
+}
+
+// Experimental behavioral feature (not a CssShim): opt-in, off by default, and
+// carries no upstream issue yet — see canvas-controls-dock.ts.
+const canvasControlsDock = createCanvasControlsDock();
+
+function canvasDockSetting(): SettingParam {
+  return {
+    id: CANVAS_DOCK_SETTING_ID,
+    name: "Dock floating canvas controls into a scrollable bottom bar (experimental)",
+    type: "boolean",
+    defaultValue: false,
+    tooltip:
+      "EXPERIMENTAL: gather the run/queue actionbar, sidebar toggle, graph + app-mode dropdown, the canvas menu (zoom/minimap/fit-view) and the pysssss image feed into one fixed bottom bar you can scroll horizontally by touch. Reparents live UI; switch off to restore everything in place.",
+    // Fires once at registration with the stored value, then on every toggle.
+    onChange: (value: unknown) => {
+      if (value) canvasControlsDock.start();
+      else canvasControlsDock.stop();
+    },
+  } as SettingParam;
 }
 
 app.registerExtension({
   name: "comfy.touch-shim",
-  settings: shimSettings(),
+  settings: [...shimSettings(), canvasDockSetting()],
   commands: [
     {
       id: DOCK_COMMAND_ID,
