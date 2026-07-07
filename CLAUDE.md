@@ -11,6 +11,7 @@ A **stopgap-shim pack**, deliberately unlike its modal siblings: a home for smal
 | Path | Purpose |
 |------|---------|
 | `src/index.ts` | The extension: the `SHIMS` registry (CSS shims + settings wiring) and commands. |
+| `src/canvas-controls-dock.ts` | Experimental **behavioral** shim (not a `CssShim`): reparents the floating on-canvas controls into one horizontally-scrollable bottom bar. Fail-soft, reversible, carries no `upstream` yet (QOL experiment). Toggled by `TouchShim.CanvasControlsDock`. |
 | `src/comfyui-shims.d.ts` | Types the `/scripts/app.js` runtime import (via the `paths` mapping in `tsconfig.json`). |
 | `__init__.py` | Loader stub. Empty `NODE_CLASS_MAPPINGS`; exports `WEB_DIRECTORY = "./web/dist"`. |
 | `web/dist/` | **Generated** by `bun run build`, committed (tracked) so git clone/update carries it. ComfyUI serves it at `/extensions/comfyui-touch-shim/`. |
