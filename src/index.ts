@@ -22,6 +22,7 @@ import { createCanvasControlsDock } from "./canvas-controls-dock";
 
 const EXT_NAME = "comfyui-touch-shim";
 const DOCK_COMMAND_ID = "touch-shim.dock-actionbar";
+const TOGGLE_CANVAS_DOCK_COMMAND_ID = "touch-shim.toggle-canvas-controls-dock";
 const CANVAS_DOCK_SETTING_ID = "TouchShim.CanvasControlsDock";
 
 // ============================================================
@@ -139,6 +140,21 @@ export function dockActionbar(
 }
 
 // ============================================================
+// Toggle-canvas-controls-dock command
+// ============================================================
+
+// The dock is otherwise only reachable via the settings dialog (Settings >
+// Touch Shim). `extensionManager.setting.set` writes through the same
+// setting store the checkbox uses, so this fires the `onChange` registered
+// in canvasDockSetting() below — no direct start()/stop() call needed here.
+export function toggleCanvasControlsDock(
+  extensionManager: Pick<ComfyApp["extensionManager"], "setting"> = app.extensionManager,
+): void {
+  const enabled = extensionManager.setting.get<boolean>(CANVAS_DOCK_SETTING_ID) ?? false;
+  extensionManager.setting.set(CANVAS_DOCK_SETTING_ID, !enabled);
+}
+
+// ============================================================
 // Wiring
 // ============================================================
 
@@ -190,13 +206,19 @@ app.registerExtension({
       icon: "pi pi-arrow-up",
       function: () => dockActionbar(),
     },
+    {
+      id: TOGGLE_CANVAS_DOCK_COMMAND_ID,
+      label: "Toggle scrollable canvas controls bar (experimental)",
+      icon: "pi pi-arrows-h",
+      function: () => toggleCanvasControlsDock(),
+    },
   ],
   menuCommands: [
     {
       // The family's shared submenu — keep in sync with FAMILY_MENU_PATH in
       // @laurigates/comfy-modal-kit (this pack stays kit-free by design).
       path: ["Extensions", "Touch Tools"],
-      commands: [DOCK_COMMAND_ID],
+      commands: [DOCK_COMMAND_ID, TOGGLE_CANVAS_DOCK_COMMAND_ID],
     },
   ],
 });
