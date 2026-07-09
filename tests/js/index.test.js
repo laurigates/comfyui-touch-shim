@@ -11,6 +11,7 @@ import {
   removeCssShim,
   SHIMS,
   styleElementId,
+  toggleCanvasControlsDock,
 } from "../../src/index.ts";
 
 describe("shim registry", () => {
@@ -56,5 +57,35 @@ describe("dockActionbar", () => {
     dockActionbar(storage, reload);
     expect(storage.setItem).toHaveBeenCalledWith("Comfy.MenuPosition.Docked", "true");
     expect(reload).toHaveBeenCalledOnce();
+  });
+});
+
+describe("toggleCanvasControlsDock", () => {
+  it("flips the setting through the extension manager's setting store", () => {
+    const values = { "TouchShim.CanvasControlsDock": false };
+    const extensionManager = {
+      setting: {
+        get: vi.fn((id) => values[id]),
+        set: vi.fn((id, value) => {
+          values[id] = value;
+        }),
+      },
+    };
+    toggleCanvasControlsDock(extensionManager);
+    expect(extensionManager.setting.set).toHaveBeenCalledWith("TouchShim.CanvasControlsDock", true);
+
+    toggleCanvasControlsDock(extensionManager);
+    expect(extensionManager.setting.set).toHaveBeenCalledWith(
+      "TouchShim.CanvasControlsDock",
+      false,
+    );
+  });
+
+  it("treats an unset stored value as off", () => {
+    const extensionManager = {
+      setting: { get: vi.fn(() => undefined), set: vi.fn() },
+    };
+    toggleCanvasControlsDock(extensionManager);
+    expect(extensionManager.setting.set).toHaveBeenCalledWith("TouchShim.CanvasControlsDock", true);
   });
 });

@@ -177,6 +177,7 @@ function createCanvasControlsDock(options = {}) {
 // src/index.ts
 var EXT_NAME2 = "comfyui-touch-shim";
 var DOCK_COMMAND_ID = "touch-shim.dock-actionbar";
+var TOGGLE_CANVAS_DOCK_COMMAND_ID = "touch-shim.toggle-canvas-controls-dock";
 var CANVAS_DOCK_SETTING_ID = "TouchShim.CanvasControlsDock";
 var tabCloseButton = {
   id: "TabCloseButton",
@@ -236,6 +237,10 @@ function dockActionbar(storage = localStorage, reload = () => window.location.re
   storage.setItem("Comfy.MenuPosition.Docked", "true");
   reload();
 }
+function toggleCanvasControlsDock(extensionManager = app.extensionManager) {
+  const enabled = extensionManager.setting.get(CANVAS_DOCK_SETTING_ID) ?? false;
+  extensionManager.setting.set(CANVAS_DOCK_SETTING_ID, !enabled);
+}
 function shimSettings() {
   return SHIMS.map((shim) => ({
     id: `TouchShim.${shim.id}`,
@@ -276,16 +281,23 @@ app.registerExtension({
       label: "Dock actionbar to top (reloads the page)",
       icon: "pi pi-arrow-up",
       function: () => dockActionbar()
+    },
+    {
+      id: TOGGLE_CANVAS_DOCK_COMMAND_ID,
+      label: "Toggle scrollable canvas controls bar (experimental)",
+      icon: "pi pi-arrows-h",
+      function: () => toggleCanvasControlsDock()
     }
   ],
   menuCommands: [
     {
       path: ["Extensions", "Touch Tools"],
-      commands: [DOCK_COMMAND_ID]
+      commands: [DOCK_COMMAND_ID, TOGGLE_CANVAS_DOCK_COMMAND_ID]
     }
   ]
 });
 export {
+  toggleCanvasControlsDock,
   styleElementId,
   removeCssShim,
   dockActionbar,
