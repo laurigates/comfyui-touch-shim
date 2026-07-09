@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.4...comfyui-touch-shim-v0.1.5) (2026-07-09)
+
+
+### Features
+
+* add menu command to toggle the scrollable canvas controls bar ([#10](https://github.com/laurigates/comfyui-touch-shim/issues/10)) ([12ff9c3](https://github.com/laurigates/comfyui-touch-shim/commit/12ff9c3f29fd6ddd94ba9f575363379bfdeed372))
+
 ## [0.1.4](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.3...comfyui-touch-shim-v0.1.4) (2026-07-07)
 
 
