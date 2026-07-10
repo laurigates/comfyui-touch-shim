@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.5...comfyui-touch-shim-v0.1.6) (2026-07-10)
+
+
+### Bug Fixes
+
+* stop the canvas-controls dock from capturing the left side toolbar ([#12](https://github.com/laurigates/comfyui-touch-shim/issues/12)) ([2ba48f4](https://github.com/laurigates/comfyui-touch-shim/commit/2ba48f468e646f1c1d2da82f3c941bfab479fb78))
+
 ## [0.1.5](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.4...comfyui-touch-shim-v0.1.5) (2026-07-09)
 
 
