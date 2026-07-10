@@ -85,6 +85,17 @@ Facts worth confirming this way (recheck on a `comfyui-frontend-package` bump):
 a node-only dictionary; canvas zoom is **wheel-driven**
 (`processMouseWheel -> ds.changeScale`).
 
+DOM facts verified against frontend **1.45.20** (`GraphView-*.js.map`):
+`[data-testid="side-toolbar"]` is the ENTIRE left vertical nav
+(`SideToolbar.vue`: Comfy menu + all sidebar tabs + settings, `h-full
+flex-col`) — never dock/reparent it into a horizontal container;
+`[data-testid="queue-overlay-toggle"]` + `closest(".actionbar")` lands on the
+small run/queue Panel (`ComfyActionbar.vue`; the enclosing
+`.actionbar-container` in `TopMenuSection.vue` is a different class token, so
+`closest` can't over-climb); `[data-testid="zoom-controls-button"]` +
+`closest('[role="toolbar"]')` lands on the `flex-row` canvas-menu ButtonGroup
+(`GraphCanvasMenu.vue`).
+
 Two gotchas that follow: discriminate selected items by **shape, not
 `instanceof`** (the class is renamed under minification); and to suppress native
 zoom during a gesture, intercept `wheel` (capture, `passive:false`,
