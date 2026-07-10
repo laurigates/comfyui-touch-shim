@@ -187,7 +187,7 @@ function canvasDockSetting(): SettingParam {
     type: "boolean",
     defaultValue: false,
     tooltip:
-      "EXPERIMENTAL: gather the run/queue actionbar, sidebar toggle, graph + app-mode dropdown, the canvas menu (zoom/minimap/fit-view) and the pysssss image feed into one fixed bottom bar you can scroll horizontally by touch. Reparents live UI; switch off to restore everything in place.",
+      "EXPERIMENTAL: gather the run/queue actionbar, subgraph breadcrumb, the canvas menu (zoom/minimap/fit-view) and the pysssss image feed into one fixed bottom bar you can scroll horizontally by touch. Reparents live UI; switch off to restore everything in place.",
     // Fires once at registration with the stored value, then on every toggle.
     onChange: (value: unknown) => {
       if (value) canvasControlsDock.start();

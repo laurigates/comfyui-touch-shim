@@ -50,6 +50,32 @@ describe("DOCK_TARGETS", () => {
     const ids = DOCK_TARGETS.map((t) => t.id);
     expect(new Set(ids).size).toBe(ids.length);
   });
+
+  // Regression: `[data-testid="side-toolbar"]` is the ENTIRE left vertical nav
+  // (SideToolbar.vue — Comfy menu + every sidebar tab + settings). Docking that
+  // full-height column into the horizontal bar shoved the nav to the right of
+  // the actionbar and stretched the bar to the column's height. The real
+  // targets must leave it untouched.
+  it("never captures the left side toolbar nav", () => {
+    document.body.innerHTML = `
+      <div id="left-column">
+        <nav data-testid="side-toolbar" class="side-tool-bar-container" role="toolbar">
+          <button data-testid="queue-tab-button">queue</button>
+        </nav>
+      </div>
+      <div role="toolbar"><button data-testid="zoom-controls-button">100%</button></div>
+    `;
+    const nav = document.querySelector('[data-testid="side-toolbar"]');
+
+    const resolved = resolveTargets(DOCK_TARGETS, document);
+    expect(resolved).not.toContain(nav);
+
+    const dock = createCanvasControlsDock({ targets: DOCK_TARGETS });
+    dock.start();
+    expect(nav.parentElement).toBe(document.getElementById("left-column"));
+    expect(nav.hasAttribute(DOCKED_ATTR)).toBe(false);
+    dock.stop();
+  });
 });
 
 describe("resolveTargets", () => {

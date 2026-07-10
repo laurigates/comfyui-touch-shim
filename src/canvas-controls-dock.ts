@@ -1,9 +1,9 @@
 // Canvas-controls dock — an EXPERIMENTAL behavioral shim (NOT a `CssShim`).
 //
 // Collects the floating / semi-floating on-canvas chrome (run/queue actionbar,
-// sidebar toggle rail, graph + app-mode dropdown, the bottom-right canvas menu
-// cluster, the pysssss image feed) into a single `position: fixed` bottom bar
-// that scrolls horizontally under touch.
+// subgraph breadcrumb, the bottom-right canvas menu cluster, the pysssss image
+// feed) into a single `position: fixed` bottom bar that scrolls horizontally
+// under touch.
 //
 // Unlike the CSS shims this REPARENTS live, Vue-managed DOM at runtime, so it is
 // deliberately:
@@ -37,6 +37,13 @@ interface DockTarget {
 // Ordered left-to-right in the bar. Prefer stable `data-testid` hooks; the
 // pysssss target is external and unverified (fails soft when absent), matching
 // this pack's "compiled selectors rot, degrade to nothing" discipline.
+//
+// Targets must be SMALL, HORIZONTAL clusters. `[data-testid="side-toolbar"]`
+// is deliberately NOT here: it is the entire left vertical nav (Comfy menu,
+// every sidebar tab, settings — SideToolbar.vue, verified against frontend
+// 1.45.20), and docking that full-height `flex-col` column into the horizontal
+// bar drags the nav to the right of the actionbar and stretches the bar to the
+// column's stacked height, wrecking the layout.
 export const DOCK_TARGETS: DockTarget[] = [
   { id: "breadcrumb", selector: '[data-testid="subgraph-breadcrumb"]' },
   {
@@ -44,7 +51,6 @@ export const DOCK_TARGETS: DockTarget[] = [
     selector: '[data-testid="queue-overlay-toggle"]',
     climb: ".actionbar",
   },
-  { id: "sidebar", selector: '[data-testid="side-toolbar"]' },
   {
     id: "canvas-menu",
     selector: '[data-testid="zoom-controls-button"]',
