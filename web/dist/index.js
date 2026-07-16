@@ -1,3 +1,5 @@
+/* web/dist bundle built by bun from src/ in this repository (see package.json). No third-party code is bundled. */
+
 // src/index.ts
 import { app } from "/scripts/app.js";
 
