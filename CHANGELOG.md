@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.6...comfyui-touch-shim-v0.1.7) (2026-07-17)
+
+
+### Bug Fixes
+
+* **registry:** shrink registry tarball scan surface + hygiene guard ([#15](https://github.com/laurigates/comfyui-touch-shim/issues/15)) ([81910bf](https://github.com/laurigates/comfyui-touch-shim/commit/81910bf420db516254a1752be56ebb1a1c4d1b94))
+
 ## [0.1.6](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.5...comfyui-touch-shim-v0.1.6) (2026-07-10)
 
 
