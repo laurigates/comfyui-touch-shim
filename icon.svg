@@ -1,12 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Touch Shim">
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400" role="img" aria-label="Touch Shim">
   <title>Touch Shim</title>
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2d6a4f"/>
-      <stop offset="1" stop-color="#1b4332"/>
+    <linearGradient id="tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1f1f2a"/>
+      <stop offset="1" stop-color="#12121a"/>
     </linearGradient>
   </defs>
-  <rect x="0" y="0" width="512" height="512" rx="96" fill="url(#g)"/>
-  <text x="256" y="256" fill="#ffffff" font-family="Inter, Segoe UI, system-ui, sans-serif"
-        font-size="248" font-weight="700" text-anchor="middle" dominant-baseline="central">T</text>
+  <rect x="28" y="28" width="344" height="344" rx="76" fill="url(#tile)" stroke="#2a2a36" stroke-width="2"/>
+  <!-- band-aid / plaster: a stopgap patch (each shim is deleted the release upstream fixes the bug) -->
+  <g transform="rotate(-35 200 200)">
+    <rect x="92" y="160" width="216" height="80" rx="40" fill="none" stroke="#ffb02e" stroke-width="18"/>
+    <rect x="168" y="160" width="64" height="80" fill="#ffb02e" fill-opacity="0.16" stroke="#ffb02e" stroke-width="9"/>
+    <g fill="#ffb02e">
+      <circle cx="184" cy="181" r="5"/><circle cx="200" cy="181" r="5"/><circle cx="216" cy="181" r="5"/>
+      <circle cx="184" cy="200" r="5"/><circle cx="200" cy="200" r="5"/><circle cx="216" cy="200" r="5"/>
+      <circle cx="184" cy="219" r="5"/><circle cx="200" cy="219" r="5"/><circle cx="216" cy="219" r="5"/>
+    </g>
+  </g>
 </svg>
