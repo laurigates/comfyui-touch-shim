@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.8](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.7...comfyui-touch-shim-v0.1.8) (2026-07-17)
+
+
+### Miscellaneous
+
+* redraw icon + banner to match the pack-family design system ([#18](https://github.com/laurigates/comfyui-touch-shim/issues/18)) ([d43e14c](https://github.com/laurigates/comfyui-touch-shim/commit/d43e14cbfc48e9de94aa5a11f04f0c9452fc272a))
+
 ## [0.1.7](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.6...comfyui-touch-shim-v0.1.7) (2026-07-17)
 
 
