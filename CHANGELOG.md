@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.9](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.8...comfyui-touch-shim-v0.1.9) (2026-07-30)
+
+
+### Bug Fixes
+
+* **assets:** sync the just assets recipe with the scaffold template ([#23](https://github.com/laurigates/comfyui-touch-shim/issues/23)) ([c0ef534](https://github.com/laurigates/comfyui-touch-shim/commit/c0ef534bf3e60a70e5acf65b4c1c2390cc27d201))
+
 ## [0.1.8](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.7...comfyui-touch-shim-v0.1.8) (2026-07-17)
 
 
