@@ -162,11 +162,34 @@ type ExtensionSettings = NonNullable<Parameters<ComfyApp["registerExtension"]>[0
 type SettingParam = ExtensionSettings[number];
 
 function shimSettings(): SettingParam[] {
-  return SHIMS.map((shim) => ({
+  return SHIMS.map((shim, index) => ({
+    // FROZEN. Persistence keys on the setting `id` alone
+    // (ComfyUI_frontend src/stores/settingStore.ts:78/142/157/199); `category`
+    // is read only by getSettingInfo for the nav highlight and search facets,
+    // never by the load/store path. So re-keying `category` is value-safe in
+    // both directions — but renaming an `id` silently orphans a user's value.
     id: `TouchShim.${shim.id}`,
     name: shim.name,
     type: "boolean",
     defaultValue: true,
+    // The family's shared settings category — keep in sync with
+    // FAMILY_SETTINGS_CATEGORY in @laurigates/comfy-modal-kit (this pack stays
+    // kit-free by design, same hard-copy discipline as FAMILY_MENU_PATH below).
+    //
+    // The third element is DERIVED FROM `shim.id`, which makes a future shim
+    // collision-proof by construction. Two settings sharing an identical FULL
+    // category array silently collapse into one: buildTree reuses the node at
+    // that path and unconditionally overwrites `parent.data`
+    // (ComfyUI_frontend src/utils/treeUtil.ts:24-38), so the first setting
+    // disappears from the dialog while its stored value survives — no warning,
+    // no throw. That failure would look exactly like this re-key having eaten a
+    // user's preference.
+    category: ["Touch Tools", "Touch Shim", shim.id],
+    // Settings render in REVERSE registration order: flattenTree pops a stack
+    // (treeUtil.ts:57-66) and the settings sort is stable on all-zero
+    // sortOrder. Descending values restore registration order. Group ordering
+    // stays alphabetical because every Touch Tools group's maximum is 100.
+    sortOrder: 100 - index * 10,
     tooltip: `${shim.tooltip} Stopgap for ${shim.upstream}`,
     // Fires once at registration with the stored value, then on every toggle.
     onChange: (value: unknown) => {
@@ -182,10 +205,17 @@ const canvasControlsDock = createCanvasControlsDock();
 
 function canvasDockSetting(): SettingParam {
   return {
+    // FROZEN — see the note on the shim settings' `id` above.
     id: CANVAS_DOCK_SETTING_ID,
     name: "Dock floating canvas controls into a scrollable bottom bar (experimental)",
     type: "boolean",
     defaultValue: false,
+    // Same family category as the shims (see shimSettings above for why the
+    // third element must be distinct from every other Touch Shim setting's).
+    category: ["Touch Tools", "Touch Shim", "CanvasControlsDock"],
+    // Lowest of this group, so the experimental toggle renders last — see the
+    // reverse-registration-order note in shimSettings.
+    sortOrder: 10,
     tooltip:
       "EXPERIMENTAL: gather the run/queue actionbar, subgraph breadcrumb, the canvas menu (zoom/minimap/fit-view) and the pysssss image feed into one fixed bottom bar you can scroll horizontally by touch. Reparents live UI; switch off to restore everything in place.",
     // Fires once at registration with the stored value, then on every toggle.
@@ -196,9 +226,16 @@ function canvasDockSetting(): SettingParam {
   } as SettingParam;
 }
 
+/**
+ * Every setting this pack registers, in registration order. Exported so the
+ * suite can assert the category arrays are pairwise distinct — the silent
+ * buildTree collapse described in shimSettings() is invisible at runtime.
+ */
+export const SETTINGS: SettingParam[] = [...shimSettings(), canvasDockSetting()];
+
 app.registerExtension({
   name: "comfy.touch-shim",
-  settings: [...shimSettings(), canvasDockSetting()],
+  settings: SETTINGS,
   commands: [
     {
       id: DOCK_COMMAND_ID,
