@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.10](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.9...comfyui-touch-shim-v0.1.10) (2026-08-08)
+
+
+### Bug Fixes
+
+* **settings:** file the shims under the Touch Tools category ([#25](https://github.com/laurigates/comfyui-touch-shim/issues/25)) ([ab5383f](https://github.com/laurigates/comfyui-touch-shim/commit/ab5383f9a7b17abcf65ccb9deb927022534a7393))
+
 ## [0.1.9](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.8...comfyui-touch-shim-v0.1.9) (2026-07-30)
 
 
