@@ -243,11 +243,13 @@ function toggleCanvasControlsDock(extensionManager = app.extensionManager) {
   extensionManager.setting.set(CANVAS_DOCK_SETTING_ID, !enabled);
 }
 function shimSettings() {
-  return SHIMS.map((shim) => ({
+  return SHIMS.map((shim, index) => ({
     id: `TouchShim.${shim.id}`,
     name: shim.name,
     type: "boolean",
     defaultValue: true,
+    category: ["Touch Tools", "Touch Shim", shim.id],
+    sortOrder: 100 - index * 10,
     tooltip: `${shim.tooltip} Stopgap for ${shim.upstream}`,
     onChange: (value) => {
       if (value)
@@ -264,6 +266,8 @@ function canvasDockSetting() {
     name: "Dock floating canvas controls into a scrollable bottom bar (experimental)",
     type: "boolean",
     defaultValue: false,
+    category: ["Touch Tools", "Touch Shim", "CanvasControlsDock"],
+    sortOrder: 10,
     tooltip: "EXPERIMENTAL: gather the run/queue actionbar, subgraph breadcrumb, the canvas menu (zoom/minimap/fit-view) and the pysssss image feed into one fixed bottom bar you can scroll horizontally by touch. Reparents live UI; switch off to restore everything in place.",
     onChange: (value) => {
       if (value)
@@ -273,9 +277,10 @@ function canvasDockSetting() {
     }
   };
 }
+var SETTINGS = [...shimSettings(), canvasDockSetting()];
 app.registerExtension({
   name: "comfy.touch-shim",
-  settings: [...shimSettings(), canvasDockSetting()],
+  settings: SETTINGS,
   commands: [
     {
       id: DOCK_COMMAND_ID,
@@ -303,5 +308,6 @@ export {
   removeCssShim,
   dockActionbar,
   applyCssShim,
-  SHIMS
+  SHIMS,
+  SETTINGS
 };
