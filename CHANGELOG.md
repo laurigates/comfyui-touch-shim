@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.11](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.10...comfyui-touch-shim-v0.1.11) (2026-08-16)
+
+
+### Miscellaneous
+
+* **ci:** guard registry-health against closing on Pending; drop duplicate Renovate runner ([#28](https://github.com/laurigates/comfyui-touch-shim/issues/28)) ([0159009](https://github.com/laurigates/comfyui-touch-shim/commit/0159009a9ed87344fc60f15251bf2c263f33b213))
+
 ## [0.1.10](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.9...comfyui-touch-shim-v0.1.10) (2026-08-08)
 
 
