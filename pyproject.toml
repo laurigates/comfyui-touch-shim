@@ -1,7 +1,7 @@
 [project]
 name = "comfyui-touch-shim"
 description = "Small stopgap mobile/touch QOL fixes for upstream ComfyUI frontend bugs — each shim toggleable and deletable once fixed upstream."
-version = "0.1.10"
+version = "0.1.11"
 license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.10"
