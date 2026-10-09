@@ -303,11 +303,11 @@ app.registerExtension({
   ]
 });
 export {
-  toggleCanvasControlsDock,
-  styleElementId,
-  removeCssShim,
-  dockActionbar,
-  applyCssShim,
+  SETTINGS,
   SHIMS,
-  SETTINGS
+  applyCssShim,
+  dockActionbar,
+  removeCssShim,
+  styleElementId,
+  toggleCanvasControlsDock
 };
