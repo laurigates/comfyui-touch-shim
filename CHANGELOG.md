@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.12](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.11...comfyui-touch-shim-v0.1.12) (2026-10-23)
+
+
+### Miscellaneous
+
+* **deps:** update all non-major dependencies ([#31](https://github.com/laurigates/comfyui-touch-shim/issues/31)) ([2912aa3](https://github.com/laurigates/comfyui-touch-shim/commit/2912aa34193d5cdff9d075da402861641f7cc08c))
+
 ## [0.1.11](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.10...comfyui-touch-shim-v0.1.11) (2026-08-16)
 
 
