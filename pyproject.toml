@@ -16,7 +16,7 @@ classifiers = [
 
 # Floor tied to the registerExtension action-bar/command API. Frontend-only pack — no runtime Python deps.
 dependencies = [
-    "comfyui-frontend-package>=1.40.0",
+    "comfyui-frontend-package==1.45.20",
 ]
 
 [project.urls]
@@ -25,10 +25,10 @@ Issues = "https://github.com/laurigates/comfyui-touch-shim/issues"
 
 [dependency-groups]
 dev = [
-    "ruff>=0.11",
-    "pytest>=8",
-    "pre-commit>=4",
-    "pathspec>=1.1.1",
+    "ruff==0.15.20",
+    "pytest==9.1.1",
+    "pre-commit==4.6.0",
+    "pathspec==1.1.1",
 ]
 
 [tool.ruff]
