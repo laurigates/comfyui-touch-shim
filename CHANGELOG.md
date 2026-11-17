@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.13](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.12...comfyui-touch-shim-v0.1.13) (2026-11-16)
+
+
+### Bug Fixes
+
+* **types:** move @comfyorg/comfyui-frontend-types to ^1.60.0 ([#42](https://github.com/laurigates/comfyui-touch-shim/issues/42)) ([072213b](https://github.com/laurigates/comfyui-touch-shim/commit/072213b031251868e80a4a9b69ed5d723e350526))
+
 ## [0.1.12](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.11...comfyui-touch-shim-v0.1.12) (2026-10-23)
 
 
