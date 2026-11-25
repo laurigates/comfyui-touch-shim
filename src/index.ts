@@ -168,7 +168,7 @@ function shimSettings(): SettingParam[] {
     // is read only by getSettingInfo for the nav highlight and search facets,
     // never by the load/store path. So re-keying `category` is value-safe in
     // both directions — but renaming an `id` silently orphans a user's value.
-    id: `TouchShim.${shim.id}`,
+    id: `TouchShim.${shim.id}` as SettingParam["id"],
     name: shim.name,
     type: "boolean",
     defaultValue: true,
@@ -206,7 +206,7 @@ const canvasControlsDock = createCanvasControlsDock();
 function canvasDockSetting(): SettingParam {
   return {
     // FROZEN — see the note on the shim settings' `id` above.
-    id: CANVAS_DOCK_SETTING_ID,
+    id: CANVAS_DOCK_SETTING_ID as SettingParam["id"],
     name: "Dock floating canvas controls into a scrollable bottom bar (experimental)",
     type: "boolean",
     defaultValue: false,
