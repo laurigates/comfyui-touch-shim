@@ -17,7 +17,7 @@ A **stopgap-shim pack**, deliberately unlike its modal siblings: a home for smal
 | `web/dist/` | **Generated** by `bun run build`, committed (tracked) so git clone/update carries it. ComfyUI serves it at `/extensions/comfyui-touch-shim/`. |
 | `pyproject.toml` | Comfy Registry metadata. `PublisherId` + `version` are the fields you touch; `[tool.comfy] includes = ["web/dist"]` force-ships the built output. |
 | `tsconfig.json` / `biome.json` / `knip.json` | Strict TS config, Biome lint/format, knip dead-code. |
-| `.github/workflows/` | `ci.yml` (tsc+build/biome/vitest/ruff/pytest/gitleaks), `publish.yml` (builds then publishes on version bump), `release-please.yml`. |
+| `.github/workflows/` | `ci.yml` (tsc+build/biome/vitest/ruff/pytest/gitleaks), `publish.yml` (builds then publishes on version bump), `release-please.yml`, `clear-autorelease-labels.yml` (removes stale `autorelease: pending`/`tagged` labels from merged PRs on release), `registry-health.yml` (checks the declared version is Active in the Comfy Registry), `merge-method.yml` (advisory `merge-method` check and `merge:*` label). |
 | `tests/js/` | Vitest suite importing the `.ts` source directly. `tests/test_init.py` is a pytest loader-stub smoke test. |
 | `justfile` | `build`, `lint`, `format`, `test`, `check` recipes — the local CI gate. |
 
