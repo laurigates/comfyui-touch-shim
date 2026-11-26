@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.14](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.13...comfyui-touch-shim-v0.1.14) (2026-11-26)
+
+
+### Miscellaneous
+
+* **claude:** reconcile Claude Code config with the repo baseline ([#40](https://github.com/laurigates/comfyui-touch-shim/issues/40)) ([8dcc3a5](https://github.com/laurigates/comfyui-touch-shim/commit/8dcc3a52c42a0a2ba25de0eab298e7ed7087672b))
+* **deps:** update dependency virtualenv to v21.14.10 [security] ([#44](https://github.com/laurigates/comfyui-touch-shim/issues/44)) ([68ca4ef](https://github.com/laurigates/comfyui-touch-shim/commit/68ca4ef86e25f31aa2e58b903ccd1ee8e0f42bae))
+
 ## [0.1.13](https://github.com/laurigates/comfyui-touch-shim/compare/comfyui-touch-shim-v0.1.12...comfyui-touch-shim-v0.1.13) (2026-11-16)
 
 
